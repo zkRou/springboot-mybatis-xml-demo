@@ -1,4 +1,4 @@
-package com.kris.springbootmybatisxmldemo.entity;
+package com.kris.springbootmybatisxmldemo.entity.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,11 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Clazz {
+public class CoursePO {
 
     private Integer id;
 
-    private Integer grade;
-
-    private Integer clazz;
+    private String name;
 }

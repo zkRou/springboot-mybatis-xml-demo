@@ -1,7 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kris.springbootmybatisxmldemo.mapper.StudentMapper">
-    <select id="findAll" resultType="com.kris.springbootmybatisxmldemo.entity.Student">
-        select * from t_student;
+
+    <sql id="studentSql">
+        ${alias}
+        .
+        id
+        as
+        id,
+        ${alias}
+        .
+        name
+        as
+        name,
+        ${alias}
+        .
+        gender
+        as
+        gender,
+        ${alias}
+        .
+        age
+        as
+        age,
+        ${alias}
+        .
+        clazz_id
+        as
+        clazzId
+    </sql>
+
+    <select id="findAll" resultType="com.kris.springbootmybatisxmldemo.entity.po.StudentPO">
+        select
+        <include refid="studentSql">
+            <property name="alias" value="t"/>
+        </include>
+        from t_student t;
+    </select>
+
+    <select id="findAllWithClazz" resultType="com.kris.springbootmybatisxmldemo.entity.vo.StudentClazzVO">
+        select s.id, s.name, s.gender, s.age, c.grade, c.clazz
+        from t_student s
+                 join t_clazz c
+                      on s.clazz_id = c.id;
+    </select>
+
+    <select id="countByGrade" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select count(*)
+        from t_student s
+        join t_clazz c
+        on s.clazz_id = c.id
+        <where>
+            <if test="grade != null">
+                grade = #{grade}
+            </if>
+        </where>
     </select>
 </mapper>

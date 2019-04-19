@@ -1,4 +1,4 @@
-package com.kris.springbootmybatisxmldemo.entity;
+package com.kris.springbootmybatisxmldemo.entity.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Student {
+public class StudentClazzVO {
 
     private Integer id;
 
@@ -17,5 +17,7 @@ public class Student {
 
     private Integer age;
 
-    private Integer classId;
+    private String grade;
+
+    private String clazz;
 }

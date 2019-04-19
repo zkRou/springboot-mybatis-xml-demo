@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kris.springbootmybatisxmldemo.mapper.ClazzMapper">
 
-    <select id="findAll" resultType="com.kris.springbootmybatisxmldemo.entity.Clazz">
+    <select id="findAll" resultType="com.kris.springbootmybatisxmldemo.entity.po.ClazzPO">
         select * from t_clazz;
     </select>
 </mapper>
